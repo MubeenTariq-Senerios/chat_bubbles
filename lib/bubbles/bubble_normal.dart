@@ -18,8 +18,10 @@ class BubbleNormal extends StatelessWidget {
   final bool isSender;
   final Color color;
   final String text;
+  final String dateText;
   final bool tail;
   final bool sent;
+  final bool showTime;
   final bool delivered;
   final bool seen;
   final TextStyle textStyle;
@@ -30,9 +32,11 @@ class BubbleNormal extends StatelessWidget {
     this.bubbleRadius = BUBBLE_RADIUS,
     this.isSender = true,
     this.color = Colors.white70,
+    this.dateText='',
     this.tail = true,
     this.sent = false,
     this.delivered = false,
+    this.showTime = false,
     this.seen = false,
     this.textStyle = const TextStyle(
       color: Colors.black87,
@@ -44,6 +48,7 @@ class BubbleNormal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool stateTick = false;
+    bool stateTime=false;
     Icon? stateIcon;
     String? timeText;
     if (sent) {
@@ -70,6 +75,11 @@ class BubbleNormal extends StatelessWidget {
         color: Color(0xFF92DEDA),
       );
     }
+    if (showTime) {
+      stateTime = true;
+      timeText = timeText;
+    }
+
 
     return Row(
       children: <Widget>[
@@ -116,15 +126,24 @@ class BubbleNormal extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                   ),
-                  stateIcon != null && stateTick
+                  timeText != null && stateTick
                       ? Positioned(
-                          bottom: 4,
-                          right: 6,
-                          child: stateIcon,
-                        )
+                    bottom: 4,
+                    right: 6,
+                    child: Text(timeText),
+                  )
                       : SizedBox(
-                          width: 1,
-                        ),
+                    width: 1,
+                  ),
+                  // stateIcon != null && stateTick
+                  //     ? Positioned(
+                  //         bottom: 4,
+                  //         right: 6,
+                  //         child: stateIcon,
+                  //       )
+                  //     : SizedBox(
+                  //         width: 1,
+                  //       ),
                 ],
               ),
             ),
