@@ -17,8 +17,10 @@ class BubbleNormal extends StatelessWidget {
   final double bubbleRadius;
   final bool isSender;
   final Color color;
+  final Color dateFontColor;
   final String text;
   final String dateText;
+  final double dateFontSize;
   final bool tail;
   final bool sent;
   final bool showTime;
@@ -32,7 +34,9 @@ class BubbleNormal extends StatelessWidget {
     this.bubbleRadius = BUBBLE_RADIUS,
     this.isSender = true,
     this.color = Colors.white70,
+    this.dateFontColor = Colors.black,
     this.dateText='',
+    this.dateFontSize=18.0,
     this.tail = true,
     this.sent = false,
     this.delivered = false,
@@ -77,7 +81,7 @@ class BubbleNormal extends StatelessWidget {
     }
     if (showTime) {
       stateTime = true;
-      timeText = timeText;
+      timeText = dateText;
     }
 
 
@@ -126,11 +130,11 @@ class BubbleNormal extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                   ),
-                  timeText != null && stateTick
+                  dateText.isNotEmpty && stateTick
                       ? Positioned(
                     bottom: 4,
                     right: 6,
-                    child: Text(timeText),
+                    child: Text(dateText,style: TextStyle(fontSize: dateFontSize,color: dateFontColor),),
                   )
                       : SizedBox(
                     width: 1,
