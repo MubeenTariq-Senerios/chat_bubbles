@@ -45,6 +45,7 @@ class BubbleNormal extends StatelessWidget {
   Widget build(BuildContext context) {
     bool stateTick = false;
     Icon? stateIcon;
+    String? timeText;
     if (sent) {
       stateTick = true;
       stateIcon = Icon(
@@ -64,7 +65,7 @@ class BubbleNormal extends StatelessWidget {
     if (seen) {
       stateTick = true;
       stateIcon = Icon(
-        Icons.done_all,
+        Icons.save,
         size: 18,
         color: Color(0xFF92DEDA),
       );
