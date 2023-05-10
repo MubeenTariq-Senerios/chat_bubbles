@@ -49,7 +49,7 @@ class BubbleNormal extends StatelessWidget {
     if (sent) {
       stateTick = true;
       stateIcon = Icon(
-        Icons.done,
+        Icons.ac_unit_rounded,
         size: 18,
         color: Color(0xFF97AD8E),
       );
@@ -57,7 +57,7 @@ class BubbleNormal extends StatelessWidget {
     if (delivered) {
       stateTick = true;
       stateIcon = Icon(
-        Icons.done_all,
+        Icons.safety_check_rounded,
         size: 18,
         color: Color(0xFF97AD8E),
       );
