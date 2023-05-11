@@ -91,6 +91,7 @@ class BubbleNormal extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: isSender==false? MainAxisAlignment.start:MainAxisAlignment.end,

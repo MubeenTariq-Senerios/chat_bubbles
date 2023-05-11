@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 ///
 ///
 class DateChip extends StatelessWidget {
-  final DateTime date;
+  final String date;
   final Color color;
   final Color textFontColor;
   final double textFontSize;
@@ -37,7 +37,7 @@ class DateChip extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Text(
-            Algo.dateChipText(date),
+          date,
             style: TextStyle(fontSize: textFontSize,color: textFontColor),
           ),
         ),
