@@ -20,7 +20,9 @@ class BubbleNormal extends StatelessWidget {
   final Color dateFontColor;
   final String text;
   final String dateText;
+  final String imageUrl;
   final double dateFontSize;
+  final double imageHeightWidth;
   final bool tail;
   final bool sent;
   final bool showTime;
@@ -36,7 +38,9 @@ class BubbleNormal extends StatelessWidget {
     this.color = Colors.white70,
     this.dateFontColor = Colors.black,
     this.dateText='',
+    this.imageUrl='',
     this.dateFontSize=18.0,
+    this.imageHeightWidth=20.0,
     this.tail = true,
     this.sent = false,
     this.delivered = false,
@@ -94,6 +98,21 @@ class BubbleNormal extends StatelessWidget {
                 ),
               )
             : Container(),
+
+        Padding(
+          padding: const EdgeInsets.only(top: 25),
+          child: SizedBox(
+            width: imageHeightWidth,
+            height: imageHeightWidth,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50.0),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+        ),
         Container(
           color: Colors.transparent,
           constraints:
