@@ -93,13 +93,13 @@ class BubbleNormal extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Row(
         children: <Widget>[
-          // isSender
-          //     ? Expanded(
-          //         child: SizedBox(
-          //           width: 5,
-          //         ),
-          //       )
-          //     : Container(),
+          isSender
+              ? Expanded(
+                  child: SizedBox(
+                    width: 5,
+                  ),
+                )
+              : Container(),
 
           isSender==false? Padding(
             padding: const EdgeInsets.only(top: 25),
@@ -177,7 +177,7 @@ class BubbleNormal extends StatelessWidget {
             ),
           ),
           isSender==true? Padding(
-            padding: const EdgeInsets.only(top: 25),
+            padding: const EdgeInsets.only(top: 25,left: 15),
             child: SizedBox(
               width: imageHeightWidth,
               height: imageHeightWidth,
@@ -190,9 +190,9 @@ class BubbleNormal extends StatelessWidget {
               ),
             ),
           ):Container(),
-          SizedBox(
-            width: 08,
-          ),
+          // SizedBox(
+          //   width: 08,
+          // ),
         ],
       ),
     );
