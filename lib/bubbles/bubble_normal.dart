@@ -94,13 +94,6 @@ class BubbleNormal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: isSender==false? MainAxisAlignment.start:MainAxisAlignment.end,
         children: <Widget>[
-          // isSender
-          //     ? Expanded(
-          //         child: SizedBox(
-          //           width: 5,
-          //         ),
-          //       )
-          //     : Container(),
 
           isSender==false? Padding(
             padding: const EdgeInsets.only(top: 25),
@@ -159,7 +152,10 @@ class BubbleNormal extends StatelessWidget {
                       ? Positioned(
                     bottom: 4,
                     right: 6,
-                    child: Text(dateText,style: TextStyle(fontSize: dateFontSize,color: dateFontColor),),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 05),
+                      child: Text(dateText,style: TextStyle(fontSize: dateFontSize,color: dateFontColor),),
+                    ),
                   )
                       : SizedBox(
                     width: 1,
@@ -177,8 +173,8 @@ class BubbleNormal extends StatelessWidget {
               ),
             ),
           ),
-          isSender==true? Padding(
-            padding: const EdgeInsets.only(top: 25,left: 15),
+          isSender==true? Align(
+            alignment: Alignment.bottomRight,
             child: SizedBox(
               width: imageHeightWidth,
               height: imageHeightWidth,
