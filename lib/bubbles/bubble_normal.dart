@@ -89,36 +89,41 @@ class BubbleNormal extends StatelessWidget {
     }
 
 
-    return Row(
-      children: <Widget>[
-        isSender
-            ? Expanded(
-                child: SizedBox(
-                  width: 5,
-                ),
-              )
-            : Container(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+      child: Row(
+        children: <Widget>[
+          // isSender
+          //     ? Expanded(
+          //         child: SizedBox(
+          //           width: 5,
+          //         ),
+          //       )
+          //     : Container(),
 
-        Padding(
-          padding: const EdgeInsets.only(top: 25),
-          child: SizedBox(
-            width: imageHeightWidth,
-            height: imageHeightWidth,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50.0),
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.fill,
+          isSender==false? Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: SizedBox(
+              width: imageHeightWidth,
+              height: imageHeightWidth,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50.0),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
+          ):SizedBox(
+            width: 5,
+            ),
+          SizedBox(
+            width: 08,
           ),
-        ),
-        Container(
-          color: Colors.transparent,
-          constraints:
-              BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .8),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+          Container(
+            color: Colors.transparent,
+            constraints:
+                BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .8),
             child: Container(
               decoration: BoxDecoration(
                 color: color,
@@ -171,8 +176,25 @@ class BubbleNormal extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+          isSender==true? Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: SizedBox(
+              width: imageHeightWidth,
+              height: imageHeightWidth,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50.0),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ):Container(),
+          SizedBox(
+            width: 08,
+          ),
+        ],
+      ),
     );
   }
 }
