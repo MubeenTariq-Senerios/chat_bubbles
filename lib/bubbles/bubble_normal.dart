@@ -92,14 +92,15 @@ class BubbleNormal extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Row(
+        mainAxisAlignment: isSender==false? MainAxisAlignment.start:MainAxisAlignment.end,
         children: <Widget>[
-          isSender
-              ? Expanded(
-                  child: SizedBox(
-                    width: 5,
-                  ),
-                )
-              : Container(),
+          // isSender
+          //     ? Expanded(
+          //         child: SizedBox(
+          //           width: 5,
+          //         ),
+          //       )
+          //     : Container(),
 
           isSender==false? Padding(
             padding: const EdgeInsets.only(top: 25),
