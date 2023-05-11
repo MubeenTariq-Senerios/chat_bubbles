@@ -173,8 +173,9 @@ class BubbleNormal extends StatelessWidget {
               ),
             ),
           ),
-          isSender==true? Align(
-            alignment: Alignment.bottomRight,
+          isSender==true? Positioned(
+            bottom: 4,
+            right: 6,
             child: SizedBox(
               width: imageHeightWidth,
               height: imageHeightWidth,
