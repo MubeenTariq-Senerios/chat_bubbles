@@ -92,6 +92,7 @@ class BubbleNormal extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: isSender==false? MainAxisAlignment.start:MainAxisAlignment.end,
         children: <Widget>[
 
@@ -173,18 +174,17 @@ class BubbleNormal extends StatelessWidget {
               ),
             ),
           ),
-          isSender==true? Positioned(
-            bottom: 4,
-            right: 6,
-            child: SizedBox(
-              width: imageHeightWidth,
-              height: imageHeightWidth,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.fill,
-                ),
+          SizedBox(
+            width: 08,
+          ),
+          isSender==true? SizedBox(
+            width: imageHeightWidth,
+            height: imageHeightWidth,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50.0),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.fill,
               ),
             ),
           ):Container(),
