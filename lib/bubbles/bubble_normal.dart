@@ -94,7 +94,7 @@ class BubbleNormal extends StatelessWidget {
 
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+      padding:   EdgeInsets.symmetric(horizontal: 16, vertical: bubbleVerticalHeight),
 
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -124,7 +124,7 @@ class BubbleNormal extends StatelessWidget {
             color: Colors.transparent,
             constraints:
                 BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .8),
-            margin: EdgeInsets.symmetric(vertical: bubbleVerticalHeight),
+            // margin: EdgeInsets.symmetric(vertical: bubbleVerticalHeight),
             child: Container(
               decoration: BoxDecoration(
                 color: color,
