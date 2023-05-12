@@ -23,6 +23,7 @@ class BubbleNormal extends StatelessWidget {
   final String imageUrl;
   final double dateFontSize;
   final double imageHeightWidth;
+  final double bubbleVerticalHeight;
   final bool tail;
   final bool sent;
   final bool assetsOrNetworkImage;
@@ -42,6 +43,7 @@ class BubbleNormal extends StatelessWidget {
     this.imageUrl='',
     this.dateFontSize=18.0,
     this.imageHeightWidth=20.0,
+    this.bubbleVerticalHeight=12.0,
     this.tail = true,
     this.sent = false,
     this.assetsOrNetworkImage = false,
@@ -122,6 +124,7 @@ class BubbleNormal extends StatelessWidget {
             color: Colors.transparent,
             constraints:
                 BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .8),
+            margin: EdgeInsets.symmetric(vertical: bubbleVerticalHeight),
             child: Container(
               decoration: BoxDecoration(
                 color: color,
