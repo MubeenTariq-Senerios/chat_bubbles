@@ -25,6 +25,7 @@ class BubbleNormal extends StatelessWidget {
   final double imageHeightWidth;
   final bool tail;
   final bool sent;
+  final bool assetsOrNetworkImage;
   final bool showTime;
   final bool delivered;
   final bool seen;
@@ -43,6 +44,7 @@ class BubbleNormal extends StatelessWidget {
     this.imageHeightWidth=20.0,
     this.tail = true,
     this.sent = false,
+    this.assetsOrNetworkImage = false,
     this.delivered = false,
     this.showTime = false,
     this.seen = false,
@@ -183,7 +185,10 @@ class BubbleNormal extends StatelessWidget {
             height: imageHeightWidth,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50.0),
-              child: Image.network(
+              child:assetsOrNetworkImage==true? Image.network(
+                imageUrl,
+                fit: BoxFit.fill,
+              ):Image.asset(
                 imageUrl,
                 fit: BoxFit.fill,
               ),
