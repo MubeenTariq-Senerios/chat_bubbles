@@ -22,6 +22,9 @@ class BubbleNormal extends StatelessWidget {
   final String dateText;
   final String imageUrl;
   final double dateFontSize;
+  final double paddingHorizontal;
+  final double paddingVertical;
+  final List<String>? images;
   final double imageHeightWidth;
   final double bubbleVerticalHeight;
   final bool tail;
@@ -39,11 +42,14 @@ class BubbleNormal extends StatelessWidget {
     this.isSender = true,
     this.color = Colors.white70,
     this.dateFontColor = Colors.black,
-    this.dateText='',
-    this.imageUrl='',
-    this.dateFontSize=18.0,
-    this.imageHeightWidth=20.0,
-    this.bubbleVerticalHeight=12.0,
+    this.dateText = '',
+    this.imageUrl = '',
+    this.images,
+    this.dateFontSize = 18.0,
+    this.imageHeightWidth = 20.0,
+    this.bubbleVerticalHeight = 12.0,
+    this.paddingHorizontal = 2.0,
+    this.paddingVertical = 2.0,
     this.tail = true,
     this.sent = false,
     this.assetsOrNetworkImage = false,
@@ -60,7 +66,7 @@ class BubbleNormal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool stateTick = false;
-    bool stateTime=false;
+    bool stateTime = false;
     Icon? stateIcon;
     String? timeText;
     if (sent) {
@@ -92,38 +98,41 @@ class BubbleNormal extends StatelessWidget {
       timeText = dateText;
     }
 
-
     return Padding(
-      padding:   EdgeInsets.symmetric(horizontal: 16, vertical: bubbleVerticalHeight),
-
+      padding:
+          EdgeInsets.symmetric(horizontal: 16, vertical: bubbleVerticalHeight),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: isSender==false? MainAxisAlignment.start:MainAxisAlignment.end,
+        mainAxisAlignment:
+            isSender == false ? MainAxisAlignment.start : MainAxisAlignment.end,
         children: <Widget>[
-
-          isSender==false? Padding(
-            padding: const EdgeInsets.only(top: 25),
-            child: SizedBox(
-              width: imageHeightWidth,
-              height: imageHeightWidth,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.fill,
+          isSender == false
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: SizedBox(
+                    width: imageHeightWidth,
+                    height: imageHeightWidth,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50.0),
+                      child: Image.network(
+                        imageUrl,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                )
+              : SizedBox(
+                  width: 5,
                 ),
-              ),
-            ),
-          ):SizedBox(
-            width: 5,
-            ),
           SizedBox(
             width: 08,
           ),
           Container(
             color: Colors.transparent,
-            constraints:
-                BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .8),
+            padding: EdgeInsets.symmetric(
+                horizontal: paddingHorizontal, vertical: paddingVertical),
+            constraints: BoxConstraints(
+                maxWidth: MediaQuery.of(context).size.width * .8),
             // margin: EdgeInsets.symmetric(vertical: bubbleVerticalHeight),
             child: Container(
               decoration: BoxDecoration(
@@ -157,16 +166,23 @@ class BubbleNormal extends StatelessWidget {
                   ),
                   dateText.isNotEmpty && stateTick
                       ? Positioned(
-                    bottom: 4,
-                    right: 6,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 05),
-                      child: Text(dateText,style: TextStyle(fontSize: dateFontSize,color: dateFontColor),),
-                    ),
-                  )
+                          bottom: 4,
+                          right: 6,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 05),
+                            child: images == null
+                                ? Text(
+                                    dateText,
+                                    style: TextStyle(
+                                        fontSize: dateFontSize,
+                                        color: dateFontColor),
+                                  )
+                                : Image.network('$images'),
+                          ),
+                        )
                       : SizedBox(
-                    width: 1,
-                  ),
+                          width: 1,
+                        ),
                   // stateIcon != null && stateTick
                   //     ? Positioned(
                   //         bottom: 4,
@@ -183,20 +199,24 @@ class BubbleNormal extends StatelessWidget {
           SizedBox(
             width: 08,
           ),
-          isSender==true? SizedBox(
-            width: imageHeightWidth,
-            height: imageHeightWidth,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50.0),
-              child:assetsOrNetworkImage==true? Image.network(
-                imageUrl,
-                fit: BoxFit.fill,
-              ):Image.asset(
-                imageUrl,
-                fit: BoxFit.fill,
-              ),
-            ),
-          ):Container(),
+          isSender == true
+              ? SizedBox(
+                  width: imageHeightWidth,
+                  height: imageHeightWidth,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50.0),
+                    child: assetsOrNetworkImage == true
+                        ? Image.network(
+                            imageUrl,
+                            fit: BoxFit.fill,
+                          )
+                        : Image.asset(
+                            imageUrl,
+                            fit: BoxFit.fill,
+                          ),
+                  ),
+                )
+              : Container(),
           // SizedBox(
           //   width: 08,
           // ),
