@@ -26,6 +26,7 @@ class BubbleNormal extends StatelessWidget {
   final double paddingVertical;
   final List<String>? images;
   final bool showImage;
+  final bool showImageSender;
   final double imageHeightWidth;
   final double bubbleVerticalHeight;
   final bool tail;
@@ -42,6 +43,7 @@ class BubbleNormal extends StatelessWidget {
     this.bubbleRadius = BUBBLE_RADIUS,
     this.isSender = true,
     this.showImage = false,
+    this.showImageSender = false,
     this.color = Colors.white70,
     this.dateFontColor = Colors.black,
     this.dateText = '',
@@ -205,23 +207,25 @@ class BubbleNormal extends StatelessWidget {
           SizedBox(
             width: 08,
           ),
-          isSender == true
-              ? SizedBox(
-                  width: imageHeightWidth,
-                  height: imageHeightWidth,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50.0),
-                    child: assetsOrNetworkImage == true
-                        ? Image.network(
-                            imageUrl,
-                            fit: BoxFit.fill,
-                          )
-                        : Image.asset(
-                            imageUrl,
-                            fit: BoxFit.fill,
-                          ),
-                  ),
-                )
+          showImageSender == true
+              ? isSender == true
+                  ? SizedBox(
+                      width: imageHeightWidth,
+                      height: imageHeightWidth,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50.0),
+                        child: assetsOrNetworkImage == true
+                            ? Image.network(
+                                imageUrl,
+                                fit: BoxFit.fill,
+                              )
+                            : Image.asset(
+                                imageUrl,
+                                fit: BoxFit.fill,
+                              ),
+                      ),
+                    )
+                  : Container()
               : Container(),
           // SizedBox(
           //   width: 08,
