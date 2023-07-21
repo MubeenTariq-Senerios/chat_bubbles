@@ -25,6 +25,7 @@ class BubbleNormal extends StatelessWidget {
   final double paddingHorizontal;
   final double paddingVertical;
   final List<String>? images;
+  final bool showImage;
   final double imageHeightWidth;
   final double bubbleVerticalHeight;
   final bool tail;
@@ -40,6 +41,7 @@ class BubbleNormal extends StatelessWidget {
     required this.text,
     this.bubbleRadius = BUBBLE_RADIUS,
     this.isSender = true,
+    this.showImage = false,
     this.color = Colors.white70,
     this.dateFontColor = Colors.black,
     this.dateText = '',
@@ -106,21 +108,25 @@ class BubbleNormal extends StatelessWidget {
         mainAxisAlignment:
             isSender == false ? MainAxisAlignment.start : MainAxisAlignment.end,
         children: <Widget>[
-          isSender == false
-              ? Padding(
-                  padding: const EdgeInsets.only(top: 25),
-                  child: SizedBox(
-                    width: imageHeightWidth,
-                    height: imageHeightWidth,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50.0),
-                      child: Image.network(
-                        imageUrl,
-                        fit: BoxFit.fill,
+          showImage == true
+              ? isSender == false
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 25),
+                      child: SizedBox(
+                        width: imageHeightWidth,
+                        height: imageHeightWidth,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50.0),
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                )
+                    )
+                  : SizedBox(
+                      width: 5,
+                    )
               : SizedBox(
                   width: 5,
                 ),
