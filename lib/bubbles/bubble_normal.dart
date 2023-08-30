@@ -37,6 +37,18 @@ class BubbleNormal extends StatelessWidget {
   final bool delivered;
   final bool seen;
   final TextStyle textStyle;
+  final String mainImage;
+  final String mainImageAssets;
+  final String assetsHomeImage;
+  final String assetsCalendarImage;
+  final String assetsClockImage;
+  final String totalCountHome;
+  final String date;
+  final String startTime;
+  final String endTime;
+  final String status;
+
+  final Color statusColor;
 
   BubbleNormal({
     Key? key,
@@ -47,7 +59,18 @@ class BubbleNormal extends StatelessWidget {
     this.showImageSender = false,
     this.showTourDetails = false,
     this.color = Colors.white70,
+    this.statusColor = Colors.white70,
     this.dateFontColor = Colors.black,
+    this.mainImageAssets = '',
+    this.mainImage = '',
+    this.assetsHomeImage = '',
+    this.assetsCalendarImage = '',
+    this.assetsClockImage = '',
+    this.totalCountHome = '',
+    this.date = '',
+    this.startTime = '',
+    this.endTime = '',
+    this.status = '',
     this.dateText = '',
     this.imageUrl = '',
     this.images,
@@ -170,9 +193,196 @@ class BubbleNormal extends StatelessWidget {
                         : EdgeInsets.symmetric(vertical: 6, horizontal: 12),
                     child: showTourDetails == true
                         ? Container(
-                            height: 100,
-                            width: 80,
-                            color: Colors.blue,
+                            height: 210,
+                            width: 190,
+                            margin: const EdgeInsets.only(
+                                right: 05, bottom: 10, left: 10),
+                            decoration: BoxDecoration(
+                              color: Color(0xffFFFFFF),
+                              borderRadius: BorderRadius.circular(8.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xFF13C6FE).withOpacity(0.15),
+                                  spreadRadius: 0.5,
+                                  blurRadius: 5,
+                                  offset: const Offset(
+                                      0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 110,
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(8.0),
+                                      topRight: Radius.circular(8.0),
+                                    ),
+                                    child: mainImage == ''
+                                        ? Image.asset(
+                                            mainImageAssets,
+                                            fit: BoxFit.cover,
+                                          )
+                                        : Image.network(
+                                            mainImage,
+                                            fit: BoxFit.cover,
+                                          ),
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(height: 05),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Image.asset(
+                                                    assetsHomeImage,
+                                                    height: 15,
+                                                    width: 15,
+                                                    color: Color(0xff1089FE),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 05,
+                                                  ),
+                                                  Text(
+                                                    totalCountHome,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium!
+                                                        .copyWith(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color:
+                                                              Color(0xFF042727),
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                        ),
+                                                    textAlign: TextAlign.center,
+                                                    // font
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                ),
+                                                child: Container(
+                                                  decoration: ShapeDecoration(
+                                                    color:
+                                                        const Color(0xFFFDDCD5),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 8.0,
+                                                        vertical: 5),
+                                                    child: Text(
+                                                      status,
+                                                      style: TextStyle(
+                                                        color: statusColor,
+                                                        fontSize: 12,
+                                                        fontFamily: 'Work Sans',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 0.95,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                assetsCalendarImage,
+                                                scale: 3.8,
+                                                color: Color(0xff1089FE),
+                                              ),
+                                              const SizedBox(
+                                                width: 05,
+                                              ),
+                                              Text(
+                                                date,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium!
+                                                    .copyWith(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Color(0xFF042727)
+                                                          .withOpacity(0.70),
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                textAlign: TextAlign.left,
+                                                maxLines: 1,
+                                                // font
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                assetsClockImage,
+                                                height: 20,
+                                                width: 20,
+                                                color: Color(0xff1089FE),
+                                              ),
+                                              const SizedBox(width: 03),
+                                              Text(
+                                                '$startTime to $endTime',
+
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium!
+                                                    .copyWith(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Color(0xFF042727)
+                                                          .withOpacity(0.70),
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                textAlign: TextAlign.center,
+                                                // font
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           )
                         : Text(
                             text,
