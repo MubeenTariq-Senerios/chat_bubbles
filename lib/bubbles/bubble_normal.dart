@@ -31,6 +31,7 @@ class BubbleNormal extends StatelessWidget {
   final double bubbleVerticalHeight;
   final bool tail;
   final bool sent;
+  final bool showTourDetails;
   final bool assetsOrNetworkImage;
   final bool showTime;
   final bool delivered;
@@ -44,6 +45,7 @@ class BubbleNormal extends StatelessWidget {
     this.isSender = true,
     this.showImage = false,
     this.showImageSender = false,
+    this.showTourDetails = false,
     this.color = Colors.white70,
     this.dateFontColor = Colors.black,
     this.dateText = '',
@@ -166,11 +168,17 @@ class BubbleNormal extends StatelessWidget {
                     padding: stateTick
                         ? EdgeInsets.fromLTRB(12, 6, 28, 6)
                         : EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-                    child: Text(
-                      text,
-                      style: textStyle,
-                      textAlign: TextAlign.left,
-                    ),
+                    child: showTourDetails == true
+                        ? Container(
+                            height: 100,
+                            width: 80,
+                            color: Colors.blue,
+                          )
+                        : Text(
+                            text,
+                            style: textStyle,
+                            textAlign: TextAlign.left,
+                          ),
                   ),
                   dateText.isNotEmpty && stateTick
                       ? Positioned(
