@@ -47,7 +47,7 @@ class BubbleNormal extends StatelessWidget {
   final String startTime;
   final String endTime;
   final String status;
-
+  final double assetsIconSize;
   final Color statusColor;
 
   BubbleNormal({
@@ -79,6 +79,7 @@ class BubbleNormal extends StatelessWidget {
     this.bubbleVerticalHeight = 12.0,
     this.paddingHorizontal = 2.0,
     this.paddingVertical = 2.0,
+    this.assetsIconSize = 2.0,
     this.tail = true,
     this.sent = false,
     this.assetsOrNetworkImage = false,
@@ -252,8 +253,8 @@ class BubbleNormal extends StatelessWidget {
                                                 children: [
                                                   Image.asset(
                                                     assetsHomeImage,
-                                                    height: 15,
-                                                    width: 15,
+                                                    height: assetsIconSize,
+                                                    width: assetsIconSize,
                                                     color: Color(0xff1089FE),
                                                   ),
                                                   const SizedBox(
@@ -320,7 +321,8 @@ class BubbleNormal extends StatelessWidget {
                                             children: [
                                               Image.asset(
                                                 assetsCalendarImage,
-                                                scale: 3.8,
+                                                height: assetsIconSize,
+                                                width: assetsIconSize,
                                                 color: Color(0xff1089FE),
                                               ),
                                               const SizedBox(
