@@ -353,8 +353,8 @@ class BubbleNormal extends StatelessWidget {
                                             children: [
                                               Image.asset(
                                                 assetsClockImage,
-                                                height: 20,
-                                                width: 20,
+                                                height: assetsIconSize,
+                                                width: assetsIconSize,
                                                 color: Color(0xff1089FE),
                                               ),
                                               const SizedBox(width: 03),
