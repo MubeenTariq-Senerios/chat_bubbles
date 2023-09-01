@@ -302,14 +302,21 @@ class BubbleNormal extends StatelessWidget {
                                                         vertical: 5),
                                                     child: Text(
                                                       status,
-                                                      style: TextStyle(
-                                                        color: statusColor,
-                                                        fontSize: 12,
-                                                        fontFamily: 'Work Sans',
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        height: 0.95,
-                                                      ),
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium!
+                                                          .copyWith(
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Color(
+                                                                    0xFF042727)
+                                                                .withOpacity(
+                                                                    0.70),
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
