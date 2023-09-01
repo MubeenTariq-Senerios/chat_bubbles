@@ -226,9 +226,11 @@ class BubbleNormal extends StatelessWidget {
                                             mainImageAssets,
                                             fit: BoxFit.cover,
                                           )
-                                        : Image.network(
-                                            mainImage,
-                                            fit: BoxFit.cover,
+                                        : Expanded(
+                                            child: Image.network(
+                                              mainImage,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                   ),
                                 ),
