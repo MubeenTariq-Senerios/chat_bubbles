@@ -191,7 +191,7 @@ class BubbleNormal extends StatelessWidget {
                   Padding(
                     padding: stateTick
                         ? EdgeInsets.fromLTRB(12, 6, 28, 6)
-                        : EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                        : EdgeInsets.symmetric(vertical: 6, horizontal: 08),
                     child: showTourDetails == true
                         ? Container(
                             height: 210,
