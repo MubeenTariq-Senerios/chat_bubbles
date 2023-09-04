@@ -216,6 +216,7 @@ class BubbleNormal extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   height: 110,
+                                  width: double.maxFinite,
                                   child: ClipRRect(
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(8.0),
